@@ -17,10 +17,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -47,8 +47,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 ---------------------
 -- Custom Keymaps ---
 ---------------------
-
+-- Make a new line without entering insert mode after
 vim.keymap.set('n', '<leader>o', ':put _<CR>', { noremap = true, silent = true }) -- New line below
 vim.keymap.set('n', '<leader>O', ':put! _<CR>', { noremap = true, silent = true }) -- New line above
+
+-- Don't yank on d/D/c/C, but keep x/X as-is
+vim.keymap.set("n", "d", [["_d]], { noremap = true, silent = true, desc = 'Delete w/o yanking' })
+vim.keymap.set("n", "D", [["_D]], { noremap = true, silent = true, desc = 'Delete w/o yanking to EOL' })
+vim.keymap.set("n", "c", [["_c]], { noremap = true, silent = true, desc = 'Change w/o yanking' })
+vim.keymap.set("n", "C", [["_C]], { noremap = true, silent = true, desc = 'Change w/o yanking to EOL' })
+-- Reimplement default "dd" behavior which was changed due to the above keymaps
+vim.keymap.set('n', '<leader>dd', '0yydd', { noremap = true, silent = true, desc = 'Yank and delete the current line' })
+
+-- Save file with Ctrl+S in normal mode
+vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true, silent = true, desc = 'Save current file' })
+-- Save file with Ctrl+S in insert mode (escapes, saves, and re-enters insert mode after cursor)
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true, desc = 'Save current file' })
+
 
 -- vim: ts=2 sts=2 sw=2 et

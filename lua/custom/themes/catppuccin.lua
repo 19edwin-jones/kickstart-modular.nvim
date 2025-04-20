@@ -1,6 +1,6 @@
 return {
     {
-        'catppuccino/nvim',
+        'catppuccin/nvim',
         name = 'catppuccin',
         priority = 1000, -- Make sure to load this before all the other start plugins.
         config = function()
@@ -11,13 +11,13 @@ return {
                     light = 'frappe',
                     dark = 'macchiato',
                 },
-                transparent_background = false, -- disables setting the background color.
-                show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+                transparent_background = true, -- disables setting the background color.
+                show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
                 term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
                 dim_inactive = {
-                    enabled = false, -- dims the background color of inactive window
+                    enabled = true, -- dims the background color of inactive window
                     shade = 'dark',
-                    percentage = 0.15, -- percentage of the shade to apply to the inactive window
+                    percentage = 1.00, -- percentage of the shade to apply to the inactive window
                 },
                 no_italic = false, -- Force no italic
                 no_bold = false, -- Force no bold
@@ -50,7 +50,7 @@ return {
                         enabled = true,
                         indentscope_color = '',
                     },
-                    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+                      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
                 },
             }
             -- setup must be called before loading
@@ -58,4 +58,4 @@ return {
         end,
     },
 }
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=4 sts=4 sw=4 et

@@ -70,9 +70,4 @@ vim.opt.softtabstop = 4   -- Controls tab behavior in Insert mode
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
-vim.opt.tabstop = 4       -- Display tabs as 4 spaces
-vim.opt.shiftwidth = 4    -- Indentation size
-vim.opt.softtabstop = 4   -- Controls tab behavior in Insert mode
-
-
 -- vim: ts=2 sts=2 sw=2 et
