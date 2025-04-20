@@ -31,7 +31,6 @@ if not vim.g.vscode then
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
 
-
   -- modular approach: using `require 'path/name'` will
   -- include a plugin definition from file lua/path/name.lua
 
@@ -45,7 +44,7 @@ if not vim.g.vscode then
 
   require 'kickstart/plugins/conform',
 
-  require 'kickstart/plugins/cmp',
+  require 'kickstart/plugins/blink-cmp',
 
   -- require 'kickstart/plugins/tokyonight',
 
