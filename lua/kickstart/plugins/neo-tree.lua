@@ -6,8 +6,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-neo-tree/neo-tree.nvim",
-    },
-    config = function()
+    }, config = function()
       require("lsp-file-operations").setup()
     end,
   },
@@ -64,12 +63,20 @@ return {
       -- vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
       -- vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
       -- vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
-
+-- ENABLE enable
       require("neo-tree").setup({
+        add_blank_line_at_top = false, -- Add a blank line at the top of the tree.
+        auto_clean_after_session_restore = true, -- Automatically clean up broken neo-tree buffers saved in sessions
         close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-        popup_border_style = "rounded",
-        enable_git_status = true,
+        default_source = "filesystem", -- you can choose a specific source `last` here which indicates the last used source
         enable_diagnostics = true,
+        enable_git_status = true,
+        enable_modified_markers = true, -- Show markers for files with unsaved changes.
+        enable_opened_markers = true,   -- Enable tracking of opened files. Required for `components.name.highlight_opened_files`
+        enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
+        enable_cursor_hijack = false, -- If enabled neotree will keep the cursor on the first letter of the filename when moving in the tree.
+        git_status_async = true,
+        popup_border_style = "rounded",
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         open_files_using_relative_paths = false,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
@@ -87,7 +94,7 @@ return {
           },
           indent = {
             indent_size = 2,
-            padding = 1, -- extra padding on left hand side
+            padding = 2, -- extra padding on left hand side
             -- indent guides
             with_markers = true,
             indent_marker = "│",
@@ -103,6 +110,7 @@ return {
             folder_closed = "",
             folder_open = "",
             folder_empty = "󰜌",
+            folder_empty_open = "󰷏",
             provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
               if node.type == "file" or node.type == "terminal" then
                 local success, web_devicons = pcall(require, "nvim-web-devicons")
@@ -131,8 +139,8 @@ return {
           git_status = {
             symbols = {
               -- Change type
-              added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-              modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+              added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+              modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
               deleted = "✖", -- this can only be used in the git_status source
               renamed = "󰁕", -- this can only be used in the git_status source
               -- Status type
