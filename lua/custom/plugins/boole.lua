@@ -15,7 +15,7 @@ return {
         },
         allow_caps_additions = {
           { 'enable', 'disable' },
-          { 'true', 'false' }
+          { 'true', 'false' },
         },
       })
     end,
