@@ -24,5 +24,24 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
+function _G.ReloadConfig()
+    -- Unload relevant modules
+    for name, _ in pairs(package.loaded) do
+        if
+            name:match '^custom'
+            or name:match '^kickstart'
+            or name:match '^keymaps'
+            or name:match '^options'
+            or name:match '^lazy%-plugins'
+            or name:match '^lazy%-bootstrap'
+        then
+            package.loaded[name] = nil
+        end
+    end
+
+    -- Re-run init.lua
+    dofile(vim.env.MYVIMRC)
+    print '🔁 Neovim config reloaded.'
+end
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

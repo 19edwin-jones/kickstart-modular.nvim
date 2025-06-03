@@ -50,11 +50,14 @@ return {
                         enabled = true,
                         indentscope_color = '',
                     },
-                      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+                    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
                 },
             }
             -- setup must be called before loading
             vim.cmd.colorscheme 'catppuccin'
+
+            vim.api.nvim_set_hl(0, 'LineNr', { fg = '#8087a2', bg = 'NONE' })
+            vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#cad3f5', bg = 'NONE', bold = true })
         end,
     },
 }
