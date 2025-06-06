@@ -45,9 +45,9 @@ vim.keymap.set('n', '<M-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    group = vim.api.nvim_create_augroup('kickstart-hl-yank', { clear = true }),
     callback = function()
-        vim.highlight.on_yank()
+        vim.hl.on_yank()
     end,
 })
 ---------------------
@@ -76,10 +76,15 @@ vim.keymap.set('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true, des
 vim.keymap.set(
     'n',
     '<leader>x',
-    ':wqa<CR>',
+    ':waqa<CR>',
     { noremap = true, silent = true, desc = 'Close all buffers and quit Neovim' }
 )
-vim.keymap.set('i', '<leader>x', '<Esc>:wqa<CR>', { noremap = true, silent = true, desc = 'Save current file' })
+vim.keymap.set(
+    'i',
+    '<leader>x',
+    '<Esc>:waqa<CR>',
+    { noremap = true, silent = true, desc = 'Close all buffers and quit Neovim' }
+)
 
 -- Keep selection when indenting
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true, desc = 'Indent left and keep selection' })
