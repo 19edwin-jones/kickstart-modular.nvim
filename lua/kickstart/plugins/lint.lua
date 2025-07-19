@@ -8,7 +8,7 @@ return {
             lint.linters_by_ft = {
                 markdown = { 'markdownlint' },
                 json = { 'jsonlint' },
-                cpp = { 'cpplint' },
+                cpp = { 'codespell' },
                 python = { 'ruff' },
                 lua = { 'luacheck' },
                 javascript = { 'eslint' },
@@ -35,6 +35,18 @@ return {
                     source = 'luacheck',
                 }),
             }
+            -- -- Disbale 'missing username in TODO comment' warning
+            -- lint.linters.markdownlint = {
+            --     cmd = 'markdownlint',
+            --     stdin = true,
+            --     args = { '--stdin' },
+            --     stream = 'stdout',
+            --     ignore_exitcode = true,
+            --     parser = require('lint.parser').from_errorformat('%f:%l: %m', {
+            --         source = 'markdownlint',
+            --     }),
+            -- }
+
             -- To allow other plugins to add linters to require('lint').linters_by_ft,
             -- instead set linters_by_ft like this:
             -- lint.linters_by_ft = lint.linters_by_ft or {}
