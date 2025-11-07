@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.hl.on_yank()
     end,
 })
+
 ---------------------
 -- Custom Keymaps ---
 ---------------------
@@ -66,27 +67,61 @@ vim.keymap.set('n', 'C', [["_C]], { noremap = true, silent = true, desc = 'Chang
 vim.keymap.set('n', '<leader>dd', '0yydd', { noremap = true, silent = true, desc = 'Yank and delete the current line' })
 
 -- Save file with Ctrl+S in normal mode
-vim.keymap.set('n', '<C-s>', ':wa<CR>', { noremap = true, silent = true, desc = 'Save current file' })
+vim.keymap.set(
+    'n',
+    '<C-s>',
+    ':wa<CR>:echo "Saved current file"<CR>',
+    { noremap = true, silent = false, desc = 'Save current file' }
+)
 -- Save file with Ctrl+S in insert mode (escapes, saves, and re-enters insert mode after cursor)
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true, desc = 'Save current file' })
+vim.keymap.set(
+    'i',
+    '<C-s>',
+    '<Esc>:w<CR>:echo "Saved current file"<CR>',
+    { noremap = true, silent = false, desc = 'Save current file' }
+)
 
 -- Close current buffer with <leader>q
-vim.keymap.set('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true, desc = 'Close current buffer' })
+vim.keymap.set(
+    'n',
+    '<leader>q',
+    ':bd<CR>:echo "Closed current buffer"<CR>',
+    { noremap = true, silent = true, desc = 'Close current buffer' }
+)
 -- Close all buffers and quit Neovim with <leader>x
 vim.keymap.set(
     'n',
     '<leader>x',
-    ':waqa<CR>',
-    { noremap = true, silent = true, desc = 'Close all buffers and quit Neovim' }
+    ':wqa<CR>',
+    { noremap = true, silent = true, desc = 'Save and close all buffers and quit Neovim' }
 )
 vim.keymap.set(
     'i',
     '<leader>x',
-    '<Esc>:waqa<CR>',
-    { noremap = true, silent = true, desc = 'Close all buffers and quit Neovim' }
+    '<Esc>:wqa<CR>',
+    { noremap = true, silent = true, desc = 'Save and close all buffers and quit Neovim' }
 )
 
 -- Keep selection when indenting
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true, desc = 'Indent left and keep selection' })
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true, desc = 'Indent right and keep selection' })
+
+-- Trim trailing whitespace, keep cursor and view
+vim.keymap.set('n', '<leader>tw', function()
+    local save_search = vim.fn.getreg '/'
+    local view = vim.fn.winsaveview()
+    vim.cmd [[silent! keepjumps keeppatterns %s/\s\+$//e]]
+    vim.fn.winrestview(view)
+    vim.fn.setreg('/', save_search)
+end, { desc = '[t]rim trailing [w]hitespace' })
+
+-- Open diagnostic float for the current line with 'qf'
+vim.keymap.set('n', 'qf', function()
+    vim.diagnostic.open_float(nil, { scope = 'line', focus = false })
+end, { desc = 'Open diagnostic [q]uickfix [f]loat (line)' })
+
+-- 'H' and 'L' to go to beginning and end of line
+vim.keymap.set('n', 'H', '^', { noremap = true, silent = true, desc = 'Move to beginning of line' })
+vim.keymap.set('n', 'L', '$', { noremap = true, silent = true, desc = 'Move to end of line' })
+
 -- vim: ts=2 sts=2 sw=2 et

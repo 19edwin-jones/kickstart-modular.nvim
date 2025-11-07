@@ -64,6 +64,7 @@ vim.opt.scrolloff = 10
 vim.opt.tabstop = 4 -- Display tabs as 4 spaces
 vim.opt.shiftwidth = 4 -- Indentation size
 vim.opt.softtabstop = 4 -- Controls tab behavior in Insert mode
+vim.o.expandtab = true
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
