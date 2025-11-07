@@ -7,7 +7,7 @@
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
-vim.opt.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -20,7 +20,7 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-    vim.opt.clipboard = 'unnamedplus'
+    vim.o.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -49,7 +49,7 @@ vim.o.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+vim.o.list = true
 vim.opt.listchars = { tab = '⇥ ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -61,9 +61,9 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
 
-vim.opt.tabstop = 4 -- Display tabs as 4 spaces
-vim.opt.shiftwidth = 4 -- Indentation size
-vim.opt.softtabstop = 4 -- Controls tab behavior in Insert mode
+vim.o.tabstop = 4 -- Display tabs as 4 spaces
+vim.o.shiftwidth = 4 -- Indentation size
+vim.o.softtabstop = 4 -- Controls tab behavior in Insert mode
 vim.o.expandtab = true
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
