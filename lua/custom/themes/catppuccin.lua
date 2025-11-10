@@ -45,11 +45,12 @@ return {
                     gitsigns = true,
                     nvimtree = true,
                     treesitter = true,
-                    notify = false,
+                    notify = true,
                     mini = {
                         enabled = true,
                         indentscope_color = '',
                     },
+                    which_key = true,
                     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
                 },
             }

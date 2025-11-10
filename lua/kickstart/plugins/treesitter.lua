@@ -47,5 +47,8 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
     },
+    {
+        'tree-sitter/tree-sitter-css',
+    },
 }
 -- vim: ts=2 sts=2 sw=2 et

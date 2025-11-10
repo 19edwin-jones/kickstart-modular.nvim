@@ -101,6 +101,13 @@ vim.keymap.set(
     '<Esc>:wqa<CR>',
     { noremap = true, silent = true, desc = 'Save and close all buffers and quit Neovim' }
 )
+-- Close all buffers without saving with <leader>X
+vim.keymap.set(
+    'n',
+    '<leader>X',
+    ':qa!<CR>',
+    { noremap = true, silent = true, desc = 'Close all buffers WITHOUT saving and quit Neovim' }
+)
 
 -- Keep selection when indenting
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true, desc = 'Indent left and keep selection' })

@@ -59,13 +59,13 @@ return {
             harpoon:list():select(4)
         end, { desc = 'Open harpoon buffer 4' })
 
-        -- Toggle previous & next buffers stored within Harpoon list
-        vim.keymap.set('n', '<C-S-P>', function()
-            harpoon:list():prev()
-        end, { desc = 'Select previous buffer in harpoon' })
-
-        vim.keymap.set('n', '<C-S-N>', function()
-            harpoon:list():next()
-        end, { desc = 'Select next buffer in harpoon' })
+        -- -- Toggle previous & next buffers stored within Harpoon list
+        -- vim.keymap.set('n', '<C-S-P>', function()
+        --     harpoon:list():prev()
+        -- end, { desc = 'Select previous buffer in harpoon' })
+        --
+        -- vim.keymap.set('n', '<C-S-N>', function()
+        --     harpoon:list():next()
+        -- end, { desc = 'Select next buffer in harpoon' })
     end,
 }
